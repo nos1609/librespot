@@ -1,0 +1,32 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "ru-RU"
+early_access: false
+
+reviews:
+  profile: "chill"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  path_filters:
+    - "!target/**"
+    - "!*.lock"
+  path_instructions:
+    - path: "**/*"
+      instructions: |
+        - Never use em dashes. Use a full stop, comma, colon, or parentheses instead.
+        - Ensure Windows ARM64 (aarch64) uses valid modern Spotify Access Point platform signatures (Platform::PLATFORM_WIN32_X86_64 and CpuFamily::CPU_X86_64).
+        - Keep changes minimal and focused on Spotify protocol compatibility.
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - ".*"
+
+chat:
+  auto_reply: true
+
+knowledge_base:
+  web_search:
+    enabled: true
