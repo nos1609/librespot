@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+language: "ru-RU"
+early_access: false
+
+reviews:
+  profile: "chill"
+  request_changes_workflow: false
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+  path_filters:
+    - "!target/**"
+    - "!*.lock"
+  path_instructions:
+    - path: "core/src/connection/**"
+      instructions: |
+        - Review the Windows ARM/ARM64 platform and CPU-family mapping for Spotify Access Point compatibility.
+        - Verify non-Windows ARM behavior remains unchanged.
+        - Flag any accidental broad fallback that could misidentify unknown Windows architectures.
+        - Keep the patch minimal and focused on protocol compatibility.
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - ".*"
+
+chat:
+  auto_reply: true
+
+knowledge_base:
+  web_search:
+    enabled: true
