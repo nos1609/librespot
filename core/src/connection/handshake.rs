@@ -138,8 +138,7 @@ where
             _ => Platform::PLATFORM_OSX_X86,
         },
         "windows" => match ARCH {
-            "arm" | "aarch64" => Platform::PLATFORM_WINDOWS_CE_ARM,
-            "x86_64" => Platform::PLATFORM_WIN32_X86_64,
+            "arm" | "aarch64" | "x86_64" => Platform::PLATFORM_WIN32_X86_64,
             _ => Platform::PLATFORM_WIN32_X86,
         },
         _ => Platform::PLATFORM_LINUX_X86,
@@ -218,7 +217,7 @@ where
     packet.write_to_vec(&mut buffer)?;
 
     connection.write_all(&buffer[..]).await?;
-    Ok(())
+    Ok(buffer)
 }
 
 async fn recv_packet<T, M>(connection: &mut T, acc: &mut Vec<u8>) -> io::Result<M>
